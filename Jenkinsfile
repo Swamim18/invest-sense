@@ -5,9 +5,9 @@ pipeline {
         nodejs 'NodeJS 22'
     }
 
-    environment {
-        // Define environment variables if needed
-    }
+    // environment {
+    // Define environment variables if needed
+    // }
 
     stages {
 
