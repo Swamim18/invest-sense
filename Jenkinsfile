@@ -42,10 +42,12 @@ pipeline {
 
         stage('Deploy to Nginx') {
             steps {
-                // Requires Jenkins user to have sudo access to Nginx folder
+                // Requires Jenkins user to have access to Nginx folder
                 sh '''
                 rm -rf ${DEPLOY_DIR}/*
-                cp -r ${BUILD_DIR}/* ${DEPLOY_DIR}/
+                cp -r ${BUILD_DIR}/browser/* ${DEPLOY_DIR}/
+                cp ${BUILD_DIR}/3rdpartylicenses.txt ${DEPLOY_DIR}/
+                cp ${BUILD_DIR}/prerendered-routes.json ${DEPLOY_DIR}/
                 '''
             }
         }
