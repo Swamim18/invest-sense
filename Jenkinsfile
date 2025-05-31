@@ -25,6 +25,9 @@ pipeline {
         }
 
         stage('Run Tests') {
+            environment {
+                CHROME_BIN = '/usr/bin/google-chrome'
+            }
             steps {
                 sh 'ng test --watch=false --browsers=ChromeHeadless'
             }
