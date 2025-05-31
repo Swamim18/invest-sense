@@ -44,6 +44,7 @@ pipeline {
                 // Replace this with your deploy method
                 sh '''
                 rm -rf /var/www/html/*
+                mkdir -p /var/www/html
                 cp -r dist/invest-sense/* /var/www/html/
                 '''
             }
