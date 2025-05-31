@@ -5,9 +5,10 @@ pipeline {
         nodejs 'NodeJS 22'
     }
 
-    // environment {
-    // Define environment variables if needed
-    // }
+    environment {
+        DEPLOY_DIR = '/usr/share/nginx/html'
+        BUILD_DIR = 'dist/invest-sense'
+    }
 
     stages {
 
@@ -39,13 +40,12 @@ pipeline {
             }
         }
 
-        stage('Deploy to Localhost') {
+        stage('Deploy to Nginx') {
             steps {
-                // Replace this with your deploy method
+                // Requires Jenkins user to have sudo access to Nginx folder
                 sh '''
-                rm -rf /var/www/html/*
-                mkdir -p /var/www/html
-                cp -r dist/invest-sense/* /var/www/html/
+                rm -rf ${DEPLOY_DIR}/*
+                cp -r ${BUILD_DIR}/* ${DEPLOY_DIR}/
                 '''
             }
         }
