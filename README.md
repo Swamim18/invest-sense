@@ -2,6 +2,14 @@
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.0.0.
 
+The aim of this project is to act as an observability and analytics tool to show you the growth of your investment portfolio. For personal use case, I am building this with the Kotak Securities API, but may introduce other broker APIs in future.
+
+**Disclaimer** - I am new to Angular and am still learning. Please be responsible about your own secrets and credentials. Don't put them in the repository or in your fork. Reach out to me if you see any vulnerabilities.
+
+## Extra Tools Used
+
+Firebase for authentication
+
 ## Development server
 
 To start a local development server, run:
