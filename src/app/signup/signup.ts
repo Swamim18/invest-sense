@@ -7,20 +7,19 @@ import { ReactiveFormsModule, FormBuilder, FormGroup } from '@angular/forms';
 
 // Firebase imports
 import { initializeApp } from 'firebase/app';
-import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
+import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
 import { environment } from '../../environments/environment';
 
 @Component({
-  selector: 'app-login',
+  selector: 'app-signup',
   imports: [RouterModule, MatFormFieldModule, MatInputModule, MatButtonModule, ReactiveFormsModule],
-  templateUrl: './login.html',
-  styleUrl: './login.sass'
+  templateUrl: './signup.html',
+  styleUrl: './signup.sass'
 })
-export class Login {
+export class Signup {
   form: FormGroup;
   error: string | null = null;
 
-  // Initialize Firebase
   private _app = initializeApp(environment.firebaseConfig);
   private _auth = getAuth(this._app);
 
@@ -33,16 +32,12 @@ export class Login {
 
   onSubmit() {
     const { email, password } = this.form.value;
-    signInWithEmailAndPassword(this._auth, email, password)
+    createUserWithEmailAndPassword(this._auth, email, password)
       .then(() => {
-        this.error = null;
-        alert('Login successful');
+        // Handle successful signup
       })
       .catch((error) => {
         this.error = error.message;
-        alert('Login failed: ');
-        console.error('Login error:', this.error);
       });
   }
 }
-
